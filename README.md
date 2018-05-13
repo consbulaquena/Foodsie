@@ -6,10 +6,19 @@ Deliver food to your door.
 
 <img src="https://github.com/consbulaquena/Foodsie/blob/master/Foodsie/Foodsie/Assets.xcassets/foodsie-screen.png" width="320" style="max-width:100%;">
 
-### About
+### ABOUT
 Hungry? <b>Foodsie</b> is food delivery app that brings delicious food from your favourite local restaurant right to your door.
 
-### Features
+### HOW IT WORKS
+
+First, login with facebook.
+Search for restaurants.
+Choose meals.
+Place your order and pay via Stripe.
+The resto will prepare your food and once it’s ready, the courier will bring it to your doorstep.
+
+
+### FEATURES
 <ul>
 <li>Select food from restaurants near-by</li>
 <li>Food delivery tracking</li>
