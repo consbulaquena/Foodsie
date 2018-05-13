@@ -7,7 +7,7 @@ Deliver food to your door.
 <img src="https://github.com/consbulaquena/Foodsie/blob/master/Foodsie/Foodsie/Assets.xcassets/foodsie-screen.png" width="320" style="max-width:100%;">
 
 ### ABOUT
-Hungry? <b>Foodsie</b> is food delivery app that brings delicious food from your favourite local restaurant right to your door.
+Hungry? <b>Foodsie</b> is food delivery app that brings delicious food from your favourite local restaurant right to your door.  Foodsie makes local food delivery fast and easy! 
 
 ### HOW IT WORKS
 
