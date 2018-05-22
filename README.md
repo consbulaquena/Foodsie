@@ -27,10 +27,13 @@ The resto will prepare your food and once it’s ready, the courier will bring i
 <li>Facebook login & Authentication</li>
 <li>Firebase backend (full realtime actions)</li>
 <li>NodeJS back-end</li>
+<li>Used <a href="https://github.com/John-Lluch/SWRevealViewController">SWRevealViewController</a> menu side view controller
 <li>Deployment target: iOS 11.2+</li>
 <li>Supported devices: iPhone 5s, SE, 6, 6 Plus, 6s, 6s Plus, 7, 7 Plus, 8, 8 Plus, iPhone X </li>
 </ul>
 
+Note: 
+<a href="https://github.com/John-Lluch/SWRevealViewController">SWRevealViewController.m</a> not included in repository.
 
 ### REQUIREMENTS
 <ul><li>Xcode 9.0+</li>
