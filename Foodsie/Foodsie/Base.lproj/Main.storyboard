@@ -114,7 +114,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wik-wM-4d4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="118" y="817"/>
+            <point key="canvasLocation" x="1121" y="118"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="Dwd-4x-Jkp">
@@ -258,7 +258,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9oe-5Q-DYV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="998" y="817"/>
+            <point key="canvasLocation" x="2081" y="118"/>
         </scene>
         <!--Restaurants-->
         <scene sceneID="rVY-F7-hZR">
@@ -281,7 +281,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="283"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner" translatesAutoresizingMaskIntoConstraints="NO" id="BL3-2R-6ZX">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="burg" translatesAutoresizingMaskIntoConstraints="NO" id="BL3-2R-6ZX">
                                             <rect key="frame" x="10" y="8" width="355" height="180"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="180" id="4rH-oe-F79"/>
@@ -358,25 +358,41 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s7I-eT-dRG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="117.59999999999999" y="2293.5960591133007"/>
+            <point key="canvasLocation" x="2082" y="867"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Meals View Controller-->
         <scene sceneID="dp2-qi-bRb">
             <objects>
-                <tableViewController id="Jdr-1n-Mi8" sceneMemberID="viewController">
+                <tableViewController id="Jdr-1n-Mi8" customClass="MealsViewController" customModule="Foodsie" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Daf-cS-8Sm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="ZQ1-oq-man">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="332"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="burg" translatesAutoresizingMaskIntoConstraints="NO" id="Y2Z-R7-O9p">
+                                    <rect key="frame" x="0.0" y="-90" width="375" height="245"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
+                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R7s-i8-Pse">
+                                    <rect key="frame" x="20" y="136" width="335" height="128"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="140" id="VYW-ie-0bU">
-                                <rect key="frame" x="0.0" y="28" width="375" height="140"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MealCell" rowHeight="140" id="VYW-ie-0bU">
+                                <rect key="frame" x="0.0" y="360" width="375" height="140"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VYW-ie-0bU" id="UZe-uU-wq9">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner" translatesAutoresizingMaskIntoConstraints="NO" id="K1G-Wt-Rg6">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="burg" translatesAutoresizingMaskIntoConstraints="NO" id="K1G-Wt-Rg6">
                                             <rect key="frame" x="251" y="16" width="108" height="108"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="K1G-Wt-Rg6" secondAttribute="height" multiplier="1:1" id="ju5-4s-PAi"/>
@@ -425,13 +441,13 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q3J-KK-P6w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="904.79999999999995" y="2293.5960591133007"/>
+            <point key="canvasLocation" x="3005.5999999999999" y="866.74876847290648"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Mpp-M0-qOe">
             <objects>
                 <navigationController id="AP0-uC-iWM" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ywM-se-mvy">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" backIndicatorImage="icon_cart" id="ywM-se-mvy">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -441,13 +457,15 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hNC-Wg-q31" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="118" y="1574"/>
+            <point key="canvasLocation" x="1121" y="867"/>
         </scene>
     </scenes>
     <resources>
         <image name="banner" width="1615" height="1105"/>
         <image name="bg-1" width="375" height="667"/>
+        <image name="burg" width="564" height="333"/>
         <image name="foodsie-red-1" width="724" height="150"/>
+        <image name="icon_cart" width="25" height="25"/>
         <image name="icon_menu_24dp" width="24" height="24"/>
         <image name="icons100" width="100" height="100"/>
     </resources>
