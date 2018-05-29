@@ -11,9 +11,16 @@ import UIKit
 class CartViewController : UIViewController
 {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var menuBarButtonItem: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Menu code
+        menuBarButtonItem.target = self.revealViewController()
+        menuBarButtonItem.action = #selector(SWRevealViewController.revealToggle(_: ))
+        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+
         
         tableView.dataSource = self
         
