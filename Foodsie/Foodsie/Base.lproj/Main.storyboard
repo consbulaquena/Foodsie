@@ -87,7 +87,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="117.59999999999999" y="118.22660098522168"/>
+            <point key="canvasLocation" x="174" y="117"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="Nrs-H9-Omq">
@@ -106,7 +106,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wik-wM-4d4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1121" y="118"/>
+            <point key="canvasLocation" x="1121" y="117"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="Dwd-4x-Jkp">
@@ -204,6 +204,9 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <segue destination="Z6i-j1-PXe" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="qwj-TG-Lgy"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="50" id="W8b-BH-i6X">
                                         <rect key="frame" x="0.0" y="250" width="375" height="50"/>
@@ -255,7 +258,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9oe-5Q-DYV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2081" y="118"/>
+            <point key="canvasLocation" x="3006" y="-624"/>
         </scene>
         <!--Restaurants-->
         <scene sceneID="rVY-F7-hZR">
@@ -794,6 +797,9 @@
                                 <state key="normal" title="PLACE ORDER NOW">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="Kdg-b1-iMN" kind="show" id="zf1-MQ-oDo"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="powered_stripe" translatesAutoresizingMaskIntoConstraints="NO" id="CVo-U0-9we">
                                 <rect key="frame" x="227" y="218" width="132" height="28"/>
@@ -823,6 +829,64 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="08o-uv-ffh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5360.8000000000002" y="874.8768472906404"/>
+        </scene>
+        <!--Delivery Tracker-->
+        <scene sceneID="FqT-ha-bAI">
+            <objects>
+                <viewController id="Kdg-b1-iMN" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Lgf-vY-rOy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ZJc-V5-UzO">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                            </mapView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NLh-Ti-qgg">
+                                <rect key="frame" x="0.0" y="540" width="375" height="272"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cook-01-1" translatesAutoresizingMaskIntoConstraints="NO" id="yt2-wz-kh6">
+                                        <rect key="frame" x="147" y="8" width="80" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Denny's Casual Dining" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KpR-7V-aED">
+                                        <rect key="frame" x="64" y="134" width="247" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Preparing the Food" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ha-je-yaW">
+                                        <rect key="frame" x="64" y="96" width="247" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ZJc-V5-UzO" firstAttribute="trailing" secondItem="e7X-n1-Qar" secondAttribute="trailing" id="BJZ-Tp-btL"/>
+                            <constraint firstItem="ZJc-V5-UzO" firstAttribute="top" secondItem="Lgf-vY-rOy" secondAttribute="top" id="FCA-OW-Ine"/>
+                            <constraint firstAttribute="bottom" secondItem="ZJc-V5-UzO" secondAttribute="bottom" id="JMP-6e-nPV"/>
+                            <constraint firstItem="ZJc-V5-UzO" firstAttribute="leading" secondItem="e7X-n1-Qar" secondAttribute="leading" id="RrO-zq-ODv"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="e7X-n1-Qar"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Delivery Tracker" id="QmU-h1-u6Y">
+                        <barButtonItem key="leftBarButtonItem" image="icon_menu" id="8pT-nb-BV1">
+                            <color key="tintColor" red="0.84705882349999995" green="0.14117647059999999" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F9w-hC-3k9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6264.8000000000002" y="874.8768472906404"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Mpp-M0-qOe">
@@ -859,11 +923,30 @@
             </objects>
             <point key="canvasLocation" x="4572" y="117"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="6bl-Pn-kXn">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Z6i-j1-PXe" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="E0h-bm-ffW">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Kdg-b1-iMN" kind="relationship" relationship="rootViewController" id="0CE-wN-4Wn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q0Y-fW-HVS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6265" y="117"/>
+        </scene>
     </scenes>
     <resources>
         <image name="banner" width="1615" height="1105"/>
         <image name="bg-2" width="375" height="667"/>
         <image name="burg" width="564" height="333"/>
+        <image name="cook-01-1" width="600" height="600"/>
         <image name="foodsie-red-1" width="724" height="150"/>
         <image name="icon_cart" width="25" height="25"/>
         <image name="icon_menu" width="24" height="24"/>
@@ -874,6 +957,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="nZg-R4-AgL"/>
+        <segue reference="zf1-MQ-oDo"/>
         <segue reference="rUX-lP-06X"/>
         <segue reference="VlF-2F-IJZ"/>
     </inferredMetricsTieBreakers>
