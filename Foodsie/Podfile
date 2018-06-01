@@ -1,0 +1,23 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'Foodsie' do
+  use_frameworks!
+
+  # Pods for Foodsie
+	pod 'Stripe'
+    pod 'Alamofire'
+    pod 'SwiftyJSON'
+
+  # Pods for Firebase
+    pod 'Firebase'
+    pod 'Firebase/Database'
+    pod 'Firebase/Storage'
+    pod 'Firebase/Auth'
+
+  # Pods for Facebook SDK
+    pod 'FBSDKCoreKit'
+    pod 'FBSDKLoginKit'
+    pod 'FBSDKShareKit'
+
+end
