@@ -26,9 +26,8 @@ class LoginViewController : UIViewController
     }
     func showRestaurantsListing()
     {
-        print(FBSDKAccessToken.current().tokenString)
-        
-        if FBSDKAccessToken.current() != nil && loginSuccess {
+        loginSuccess = FBSDKAccessToken.current() != nil
+        if loginSuccess {
             performSegue(withIdentifier: "ShowRestaurantListing", sender: nil)
         }
         
