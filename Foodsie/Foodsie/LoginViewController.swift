@@ -18,6 +18,16 @@ class LoginViewController : UIViewController
     
     var loginSuccess = false
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if FBSDKAccessToken.current() != nil {
+            loginButton.setTitle("CONTIUNE AS \(User.current.name!)", for: .normal)
+        } else {
+            loginButton.setTitle("LOGIN WITH FACEBOOK", for: .normal)
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
