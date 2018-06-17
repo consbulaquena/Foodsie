@@ -18,6 +18,19 @@ class User
     
     static let current = User()
     
+    func setData(json: JSON)
+    {
+        name = json["name"].string
+        email = json["email"].string
+        id = json["id"].string
+        
+        let imageDictionary = json["picture"].dictionary
+        let imageDataDictionary = imageDictionary?["data"]?.dictionary
+        pictureURL = imageDataDictionary?["url"]?.string
+        
+    }
+    
+    
 }
 
 
