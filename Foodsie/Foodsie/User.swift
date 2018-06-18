@@ -30,6 +30,13 @@ class User
         
     }
     
+    func resetData() {
+        name = nil
+        email = nil
+        pictureURL = nil
+        id = nil
+    
+    }
     
 }
 
