@@ -21,16 +21,21 @@ class MenuTableViewController : UITableViewController
         
         usernameLabel.text = User.current.name
         
-        //implem. Alamofire
-        if let pictureURLString = User.current.pictureURL, let url = URL(string: pictureURLString){
-            Alamofire.request(url).responseData { (data) in
+        //implem. Alamofire, request pic imagepictureURL
+        
+        if let pictureURLString = User.current.pictureURL, let url = URL(string: pictureURLString) {
+            Alamofire.request(url).responseData(completionHandler: { (data) in
                 DispatchQueue.main.async {
-                    self.avatarImageView.image = UIImage(data: data.data)
-                }
+                    if let imageData = data.data {
+                        self.avatarImageView.image = UIImage(data: imageData)
+                        
             }
-        }
-    
+                }
+                    
+                })
+            }
     }
+
     //Before the segue happening
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowLoginViewController" {
