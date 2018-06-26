@@ -23,7 +23,11 @@ class Restaurant
     {
         id = json["id"].string
         name = json["name"].string
+        address = json["address"].string
+        logoURL = json["logoURL"].string
+        phone = json["phone"].string
     
+        
     }
     
     
