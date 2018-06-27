@@ -26,7 +26,15 @@ class Restaurant
         address = json["address"].string
         logoURL = json["logoURL"].string
         phone = json["phone"].string
+    }
     
+    class func getRestaurants(completion: @escaping ([Restaurant]) -> Void)
+    {
+        let restaurantsRef = Database.database().reference().child("restuarants")
+        restaurantsRef.observeSingleEvent(of: .value) { (snapshot) in
+            print(snapshot.value)
+        }
+        
         
     }
     
