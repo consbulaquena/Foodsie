@@ -32,7 +32,7 @@ class Restaurant
     {
         let restaurantsRef = Database.database().reference().child("restuarants")
         restaurantsRef.observeSingleEvent(of: .value) { (snapshot) in
-            print(snapshot.value)
+            var restaurants = 
         }
         
         
