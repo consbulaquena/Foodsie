@@ -28,11 +28,13 @@ class Restaurant
         phone = json["phone"].string
     }
     
+    
+    //create reference
     class func getRestaurants(completion: @escaping ([Restaurant]) -> Void)
     {
         let restaurantsRef = Database.database().reference().child("restuarants")
         restaurantsRef.observeSingleEvent(of: .value) { (snapshot) in
-            var restaurants = 
+           print(snapshot.value)
         }
         
         
