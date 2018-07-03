@@ -12,13 +12,34 @@ class RestaurantListingTableViewController: UITableViewController
 {
     @IBOutlet weak var menuBarButtonItem: UIBarButtonItem!
     
+    //empty array of restaurants
+    var restaurants = [Restaurant]()
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         menuBarButtonItem.target = self.revealViewController()
         menuBarButtonItem.action = #selector(SWRevealViewController.revealToggle(_: ))
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+    
+    getRestaurants()
+        
     }
+    
+    func getRestaurants()
+    {
+        Restaurant.getRestaurants { (restaurants) in
+            DispatchQueue.main.async {
+                self.restaurants = restaurants
+                
+                
+            }
+            
+        }
+    }
+    
     
 }
 
@@ -37,6 +58,7 @@ extension RestaurantListingTableViewController
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantCell", for: indexPath)
+        cell.selectionStyle = .none //disable grey selection
         return cell
     }
 
