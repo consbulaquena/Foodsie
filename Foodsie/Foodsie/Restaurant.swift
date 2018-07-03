@@ -32,9 +32,19 @@ class Restaurant
     //create reference
     class func getRestaurants(completion: @escaping ([Restaurant]) -> Void)
     {
-        let restaurantsRef = Database.database().reference().child("restuarants")
+        let restaurantsRef = Database.database().reference().child("restaurants")
         restaurantsRef.observeSingleEvent(of: .value) { (snapshot) in
-           print(snapshot.value)
+            var restaurants = [Restaurant]()
+            
+            //data for restos to use from
+            for childSnapshot in snapshot.children {
+                let value = (childSnapshot as! DataSnapshot).value
+                let json = JSON(value)
+                restaurants.append(Restaurant(json: json))
+                
+            }
+            
+            completion(restaurants)
         }
         
         
