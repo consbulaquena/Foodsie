@@ -29,6 +29,14 @@ class RestaurantCell : UITableViewCell
         self.addressLabel.text = restaurant.address
         self.nameLabel.text = restaurant.name
         self.logoImageView.image = nil
+        if let imageURL = URL(string: restaurant.logoURL!) {
+            Alamofire.request(imageURL).responseData { (responseData) in
+                DispatchQueue.main.async {
+                    if let imageData = responseData.data {
+                        self.logoImageView.image = UIImage(data: imageData)
+                    }
+                }
+            }
         
         
     }
@@ -37,3 +45,4 @@ class RestaurantCell : UITableViewCell
 
 
 
+}
