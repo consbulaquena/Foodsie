@@ -8,8 +8,13 @@
 
 import UIKit
 
+
+
 class RestaurantListingTableViewController: UITableViewController
 {
+    
+    @IBOutlet weak var SearchBar: UISearchBar!
+    
     @IBOutlet weak var menuBarButtonItem: UIBarButtonItem!
     
     //empty array of restaurants
@@ -28,12 +33,13 @@ class RestaurantListingTableViewController: UITableViewController
         
     }
     
+    //fetch data
     func getRestaurants()
     {
         Restaurant.getRestaurants { (restaurants) in
             DispatchQueue.main.async {
                 self.restaurants = restaurants
-                
+                self.tableView.reloadData()
                 
             }
             
@@ -53,13 +59,17 @@ extension RestaurantListingTableViewController
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return restaurants.count
     }
     
+    //fetch data
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantCell", for: indexPath) as! RestaurantCell
         cell.selectionStyle = .none //disable grey selection
+       
+        cell.restaurant = self.restaurants[indexPath.row]
         return cell
     }
 
 }
+
