@@ -28,7 +28,10 @@ class RestaurantListingTableViewController: UITableViewController
         menuBarButtonItem.target = self.revealViewController()
         menuBarButtonItem.action = #selector(SWRevealViewController.revealToggle(_: ))
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-    
+    //tell search bar this class is delegate
+        searchBar.delegate = self
+        
+        
     getRestaurants()
         
     }
@@ -71,5 +74,13 @@ extension RestaurantListingTableViewController
         return cell
     }
 
+}
+
+extension RestaurantListingTableViewController : UISearchBarDelegate
+{
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        <#code#>
+    }
+    
 }
 
