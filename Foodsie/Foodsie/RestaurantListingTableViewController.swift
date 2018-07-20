@@ -19,7 +19,7 @@ class RestaurantListingTableViewController: UITableViewController
     
     //empty array of restaurants
     var restaurants = [Restaurant]()
-    
+    var filteredRestaurants = [Restaurant]()
     
     
     override func viewDidLoad() {
@@ -27,14 +27,15 @@ class RestaurantListingTableViewController: UITableViewController
         
         menuBarButtonItem.target = self.revealViewController()
         menuBarButtonItem.action = #selector(SWRevealViewController.revealToggle(_: ))
+        
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
     //tell search bar this class is delegate
-        searchBar.delegate = self
+        SearchBar.delegate = self
         
-        
-    getRestaurants()
+        getRestaurants()
         
     }
+    
     
     //fetch data
     func getRestaurants()
@@ -79,8 +80,15 @@ extension RestaurantListingTableViewController
 extension RestaurantListingTableViewController : UISearchBarDelegate
 {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        <#code#>
+        filteredRestaurants = self.restaurants.filter({ (restaurant) -> Bool in
+            return restaurant.name?.lowercased().range(of: searchText.lowercased()) != nil
+        })
+        
+        self.tableView.reloadData()
     }
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
 }
 
