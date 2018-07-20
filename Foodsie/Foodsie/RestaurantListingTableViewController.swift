@@ -63,15 +63,32 @@ extension RestaurantListingTableViewController
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        //not empty thus filtered restos.
+        if SearchBar.text != "" {
+            return self.filteredRestaurants.count
+        }
+        
         return restaurants.count
     }
     
     //fetch data
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantCell", for: indexPath) as! RestaurantCell
+        
+       // For FILTER Restaurants
+        var restaurant = self.restaurants[indexPath.row]
+        
+        //search not empty
+        if SearchBar.text != "" {
+            restaurant = self.filteredRestaurants[indexPath.row]
+            
+        }
+        
+        cell.restaurant = restaurant
         cell.selectionStyle = .none //disable grey selection
-       
-        cell.restaurant = self.restaurants[indexPath.row]
+        
+        
         return cell
     }
 
