@@ -19,6 +19,8 @@ class RestaurantListingTableViewController: UITableViewController
     
     //empty array of restaurants
     var restaurants = [Restaurant]()
+    
+    
     var filteredRestaurants = [Restaurant]()
     let activityIndicatorView = UIActivityIndicatorView()
     
@@ -54,7 +56,12 @@ class RestaurantListingTableViewController: UITableViewController
     
     func showActivityIndicator()
     {
-        activityIndicatorView.frame = CGRect(x: 0, y: 0, width: 40, height: 50)
+        activityIndicatorView.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        activityIndicatorView.center = view.center
+        activityIndicatorView.activityIndicatorViewStyle = .whiteLarge
+        activityIndicatorView.color = .white
+        
+        view.addSubview(activityIndicatorView)
     }
     
     func hideActivityIndicator()
