@@ -20,7 +20,7 @@ class RestaurantListingTableViewController: UITableViewController
     //empty array of restaurants
     var restaurants = [Restaurant]()
     var filteredRestaurants = [Restaurant]()
-    
+    let activityIndicatorView = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +50,17 @@ class RestaurantListingTableViewController: UITableViewController
         }
     }
     
+    // MARK: - Activity Indicator
     
+    func showActivityIndicator()
+    {
+        
+    }
+    
+    func hideActivityIndicator()
+    {
+        
+    }
 }
 
 // Mark: UITableViewDataSource
