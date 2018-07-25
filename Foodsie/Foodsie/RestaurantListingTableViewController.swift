@@ -50,11 +50,11 @@ class RestaurantListingTableViewController: UITableViewController
         }
     }
     
-    // MARK: - Activity Indicator
+    // MARK: - Activity Indicator method
     
     func showActivityIndicator()
     {
-        
+        activityIndicatorView.frame = CGRect(x: 0, y: 0, width: 40, height: 50)
     }
     
     func hideActivityIndicator()
