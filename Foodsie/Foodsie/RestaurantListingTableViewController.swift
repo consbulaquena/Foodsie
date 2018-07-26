@@ -49,7 +49,7 @@ class RestaurantListingTableViewController: UITableViewController
                 self.restaurants = restaurants
                 self.tableView.reloadData()
                 
-//                self.hideActivityIndicator()
+                self.hideActivityIndicator()
             }
             
         }
@@ -60,7 +60,7 @@ class RestaurantListingTableViewController: UITableViewController
     func showActivityIndicator()
     {
         activityIndicatorView.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-        activityIndicatorView.center = view.center
+        activityIndicatorView.center = tableView.center
         activityIndicatorView.activityIndicatorViewStyle = .whiteLarge
         activityIndicatorView.color = .red
         
