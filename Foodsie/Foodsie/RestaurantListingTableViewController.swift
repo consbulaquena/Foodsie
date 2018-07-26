@@ -42,11 +42,14 @@ class RestaurantListingTableViewController: UITableViewController
     //fetch data
     func getRestaurants()
     {
+        showActivityIndicator()
+        
         Restaurant.getRestaurants { (restaurants) in
             DispatchQueue.main.async {
                 self.restaurants = restaurants
                 self.tableView.reloadData()
                 
+//                self.hideActivityIndicator()
             }
             
         }
@@ -59,14 +62,16 @@ class RestaurantListingTableViewController: UITableViewController
         activityIndicatorView.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
         activityIndicatorView.center = view.center
         activityIndicatorView.activityIndicatorViewStyle = .whiteLarge
-        activityIndicatorView.color = .white
+        activityIndicatorView.color = .red
         
         view.addSubview(activityIndicatorView)
+        activityIndicatorView.startAnimating()
     }
     
     func hideActivityIndicator()
     {
-        
+        activityIndicatorView.stopAnimating()
+        activityIndicatorView.removeFromSuperview()
     }
 }
 
