@@ -73,8 +73,25 @@ class RestaurantListingTableViewController: UITableViewController
         activityIndicatorView.stopAnimating()
         activityIndicatorView.removeFromSuperview()
     }
+    
+    // Mark: Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.identifier == "ShowMealsViewController" {
+        let mealsVC = segue.destination as! MealsViewController
+            //should be "" empty string, not nil to avoid fatal error
+        if SearchBar.text != "" {
+            mealsVC.restaurant =
+                self.filteredRestaurants[self.tableView.indexPathForSelectedRow!.row]
+        } else {
+            mealsVC.restaurant =
+            self.restaurants[self.tableView.indexPathForSelectedRow!.row]
+        }
+    }
 }
 
+}
 // Mark: UITableViewDataSource
 //implement UITableView data source
 
@@ -130,4 +147,5 @@ extension RestaurantListingTableViewController : UISearchBarDelegate
         searchBar.resignFirstResponder()
     }
 }
+
 

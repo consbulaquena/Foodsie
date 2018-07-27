@@ -27,7 +27,9 @@ class MealCell : UITableViewCell
     {
         nameLabel.text = meal.name
         descriptionLabel.text = meal.description
-        priceLabel.text = "\(meal.price!)"
+
+
+        priceLabel.text = "\(meal.price)"
         
         let imageURL = URL(string: meal.imageURL!)
         Alamofire.request(imageURL!).responseData { (responseData) in
@@ -40,38 +42,5 @@ class MealCell : UITableViewCell
         }
         
     }
-    
-    
-    
-    
-    
-    
+  
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
