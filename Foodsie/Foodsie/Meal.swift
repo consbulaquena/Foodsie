@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftyJSON
+import Firebase
 
 class Meal
 {
@@ -23,9 +24,21 @@ class Meal
         name = json["name"].string
         price = json["price"].double
         description = json["description"].string
-        imageURL = json["imageURL"]
+        imageURL = json["imageURL"].string
         
     }
     
-    
+    class func getMeals(withRestaurantId restaurantId: String, completion: @escaping ([Meal]) -> Void)
+    {
+        let ref = Database.database().reference().child("restaurants/\(restaurantId)/meals")
+        ref.observeSingleEvent(of: .value) { (snapshot) in
+            var meals = [Meal]()
+            for childSnapshot in snapshot.children {
+                let mealJSON = JSON((childSnapshot as! DataSnapshot ).value)
+                let meal = Meal(json: mealJSON)
+                meals.append(meal)
+                
+            }
+        }
+    }
 }
