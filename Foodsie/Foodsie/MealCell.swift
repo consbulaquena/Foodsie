@@ -29,7 +29,10 @@ class MealCell : UITableViewCell
         descriptionLabel.text = meal.description
 
 
-        priceLabel.text = "\(meal.price)"
+        priceLabel.text = "Php\(meal.price)"
+
+            // continue in here
+
         
         let imageURL = URL(string: meal.imageURL!)
         Alamofire.request(imageURL!).responseData { (responseData) in
@@ -40,7 +43,6 @@ class MealCell : UITableViewCell
 
             }
         }
-        
-    }
-  
+    
+}
 }
