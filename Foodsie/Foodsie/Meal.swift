@@ -22,7 +22,7 @@ class Meal
         id = json["id"].string
         name = json["name"].string
         price = json["price"].double
-        description = json["description"]
+        description = json["description"].string
         imageURL = json["imageURL"]
         
     }
