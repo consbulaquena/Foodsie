@@ -37,8 +37,11 @@ class Meal
                 let mealJSON = JSON((childSnapshot as! DataSnapshot ).value)
                 let meal = Meal(json: mealJSON)
                 meals.append(meal)
-                
             }
+            
+            completion(meals)
+            
+            
         }
     }
 }
