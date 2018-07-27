@@ -7,12 +7,18 @@
 //
 
 import UIKit
+import Alamofire
 
 class MealsViewController: UITableViewController
 {
+    @IBOutlet weak var restaurantNameLabel: UILabel!
+    @IBOutlet weak var restoBannerImage: UIImageView!
+    
+    
     //pass the restaurant meals
     var restaurant: Restaurant!
     var meals = [Meal]()
+
     
     
     
@@ -24,6 +30,20 @@ class MealsViewController: UITableViewController
         self.navigationController?.navigationBar.isTranslucent = true
         tableView.rowHeight = 140.0
         title = restaurant.name!
+        
+        restaurantNameLabel.text = restaurant.name
+        if let imageURL = URL(string: restaurant.logoURL!) {
+            Alamofire.request(imageURL).responseData { (responseData) in
+                DispatchQueue.main.async {
+                    if let imageData = responseData.data {
+                        self.restoBannerImage.image = UIImage(data: imageData)
+                        
+                    }
+                }
+            }
+            
+            
+        }
         
         getMeals()
     }
@@ -53,6 +73,8 @@ extension MealsViewController
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MealCell", for: indexPath) as! MealCell
+        cell.meal = self.meals[indexPath.row]
+        
         return cell
     }
 }
