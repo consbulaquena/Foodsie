@@ -4,8 +4,8 @@
 
 Deliver food to your door.
 
-<img src="https://github.com/consbulaquena/Foodsie/blob/master/Foodsie/Foodsie/Assets.xcassets/row1.png" width="960" style="max-width:100%;">
-<img src="https://github.com/consbulaquena/Foodsie/blob/master/Foodsie/Foodsie/Assets.xcassets/row2.png" width="960" style="max-width:100%;">
+<img src="https://github.com/consbulaquena/Foodsie/blob/master/Foodsie/Foodsie/Assets.xcassets/row1.jpg" width="960" style="max-width:100%;">
+<img src="https://github.com/consbulaquena/Foodsie/blob/master/Foodsie/Foodsie/Assets.xcassets/row2.jpg" width="960" style="max-width:100%;">
 <img src="https://github.com/consbulaquena/Foodsie/blob/master/Foodsie/Foodsie/Assets.xcassets/row3.png" width="440" style="max-width:100%;">
 
 ### ABOUT
