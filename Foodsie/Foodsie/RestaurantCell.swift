@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 
+
 class RestaurantCell : UITableViewCell
 {
     @IBOutlet weak var logoImageView: UIImageView!
@@ -18,6 +19,8 @@ class RestaurantCell : UITableViewCell
     @IBOutlet weak var restoTypeLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
     
+    
+    
     var restaurant: Restaurant! {
         didSet {
             self.updateUI()
@@ -26,6 +29,7 @@ class RestaurantCell : UITableViewCell
     
     func updateUI()
     {
+        self.restoTypeLabel.text = restaurant.cuisine
         self.addressLabel.text = restaurant.address
         self.nameLabel.text = restaurant.name
         self.logoImageView.image = nil
@@ -34,6 +38,7 @@ class RestaurantCell : UITableViewCell
                 DispatchQueue.main.async {
                     if let imageData = responseData.data {
                         self.logoImageView.image = UIImage(data: imageData)
+                        
                     }
                 }
             }
