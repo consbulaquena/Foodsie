@@ -28,10 +28,11 @@ class MealCell : UITableViewCell
         nameLabel.text = meal.name
         descriptionLabel.text = meal.description
 
+    
 
-        priceLabel.text = "Php\(meal.price)"
-
-            // continue in here
+        if let price = meal.price {
+            priceLabel.text = "Php \(price)"
+        }
 
         
         let imageURL = URL(string: meal.imageURL!)
