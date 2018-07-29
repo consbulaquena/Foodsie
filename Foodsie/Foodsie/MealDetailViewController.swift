@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class MealDetailViewController : UIViewController
 {
@@ -22,15 +23,39 @@ class MealDetailViewController : UIViewController
     @IBOutlet weak var quantityLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     
+    var meal: Meal!
+    var restaurant: Restaurant!
+    var quantity = 1
     
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.rightBarButtonItem = cartBarButtonItem
         quantityButtonsContainerView.layer.cornerRadius = 21.0
         quantityButtonsContainerView.layer.borderColor = UIColor.lightGray.cgColor
         quantityButtonsContainerView.layer.borderWidth = 1.0
         quantityButtonsContainerView.layer.masksToBounds = true
+        
+        title = "Meal"
+        mealNameLabel.text = meal.name
+        mealDecriptionLabel.text = meal.description
+        if let imageURLString = meal.imageURL {
+            let imageURL = URL(string: imageURLString)
+        
+            //Alamofire use to dL image
+            Alamofire.request(imageURL!).response { (responseData) in
+                DispatchQueue.main.async {
+                    if let imageData = responseData.data {
+                        self.mealImageView.image = UIImage(data: imageData)
+                        
+                    }
+                }
+            }
+            
+        }
+        
         
     }
 }
