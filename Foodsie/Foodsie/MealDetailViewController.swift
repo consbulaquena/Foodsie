@@ -11,7 +11,19 @@ import UIKit
 class MealDetailViewController : UIViewController
 {
     @IBOutlet weak var quantityButtonsContainerView: UIView!
+    @IBOutlet weak var mealImageView: UIImageView!
+    @IBOutlet weak var mealNameLabel: UILabel!
+    @IBOutlet weak var mealDecriptionLabel: UILabel!
+    @IBOutlet weak var cartBarButtonItem: UIBarButtonItem! {
+        didSet {
+        //
+    }
+    }
+    @IBOutlet weak var quantityLabel: UILabel!
+    @IBOutlet weak var totalLabel: UILabel!
     
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
