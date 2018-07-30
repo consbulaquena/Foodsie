@@ -98,6 +98,25 @@ class MealDetailViewController : UIViewController
     }
     // MARK - Add to Cart
     
+    @IBAction func addToCart(_ sender: Any)
+    {
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
+        imageView.image = self.mealImageView.image
+        imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFill
+        imageView.center = CGPoint(x: self.view.frame.width/2.0, y: self.view.frame.height - 50)
+        self.view.addSubview(imageView)
+        
+        UIView.animate(withDuration: 1.0, delay: 0.0, options: .curveEaseOut, animations: {
+            imageView.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+            imageView.center = CGPoint(x: self.view.frame.width - 40, y: 24)
+            
+        }) { (complete) in
+            
+            
+            
+        }
+    }
     
     
     
@@ -111,10 +130,7 @@ class MealDetailViewController : UIViewController
     
     
     
-    
-    
-    
-    
+
     
     
     
