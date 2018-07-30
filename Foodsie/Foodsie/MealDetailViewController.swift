@@ -22,6 +22,8 @@ class MealDetailViewController : UIViewController
     }
     @IBOutlet weak var quantityLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    
     
     var meal: Meal!
     var restaurant: Restaurant!
@@ -38,8 +40,14 @@ class MealDetailViewController : UIViewController
         quantityButtonsContainerView.layer.borderWidth = 1.0
         quantityButtonsContainerView.layer.masksToBounds = true
         
+        self.navigationController?.navigationBar.tintColor = UIColor.black
         title = "Meal"
         mealNameLabel.text = meal.name
+        
+        if let price = meal.price {
+            priceLabel.text = "Php \(price)"
+        }
+
         mealDecriptionLabel.text = meal.description
         if let imageURLString = meal.imageURL {
             let imageURL = URL(string: imageURLString)
@@ -55,17 +63,59 @@ class MealDetailViewController : UIViewController
             }
             
         }
-        
+        updateTotalLabel()
+        quantityLabel.text = "\(quantity)"
         
     }
+    func updateTotalLabel()
+    {
+        if let price = meal.price {
+            totalLabel.text = "Php \(price * Double(quantity))"
+        }
+    }
+    
+    // MARK: - Quantity
+    
+
+    @IBAction func addQuantity(_ sender: Any)
+    {
+        if quantity < 99 {
+            quantity += 1
+            quantityLabel.text = String(quantity)
+        
+            updateTotalLabel()
+        }
+    }
+    
+    @IBAction func decreasedQuantity(_sender: Any)
+    {
+        if quantity > 0 {
+            quantity -= 1
+            quantityLabel.text = String(quantity)
+        
+            updateTotalLabel()
+        }
+    }
+    // MARK - Add to Cart
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
-
-
-
-
-
-
-
-
-
-
