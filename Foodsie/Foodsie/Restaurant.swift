@@ -10,6 +10,7 @@ import Foundation
 import SwiftyJSON
 import Firebase
 
+
 class Restaurant
 {
     var id: String?
@@ -17,6 +18,7 @@ class Restaurant
     var address: String?
     var logoURL: String?
     var phone: String?
+    var cuisine: String?
     
     //from swifty json
     init(json: JSON)
@@ -26,6 +28,7 @@ class Restaurant
         address = json["address"].string
         logoURL = json["logoURL"].string
         phone = json["phone"].string
+        cuisine = json["cuisine"].string
     }
     
     
@@ -47,33 +50,19 @@ class Restaurant
             completion(restaurants)
         }
         
-        
     }
     
-    
+    func toDictionary() -> [String : Any]
+    {
+        return [
+            "id" : id!,
+            "name" : name!,
+            "address" : name!,
+            "logoURL" : logoURL!,
+            "phone" : phone!
+            
+            
+        ]
+    }
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
