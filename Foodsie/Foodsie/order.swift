@@ -51,7 +51,15 @@ class Order
     }
     
     // create method, save to firebase
-    
+    func create()
+    {
+        let restaurantNewOrderRef = Database.database().reference().child("restaurants/\(restaurantId!)/orders").childByAutoId()
+        
+        let orderId = restaurantNewOrderRef.key
+        let currentUserId = User.current.id!
+        let latestOrderRef = Database.database()
+        
+    }
     
     //3. get latest order
     
