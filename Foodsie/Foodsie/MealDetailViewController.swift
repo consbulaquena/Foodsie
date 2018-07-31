@@ -134,6 +134,7 @@ class MealDetailViewController : UIViewController
             }
             
             
+            //if there's already a restaurant
             //Else, if ordered meals same restaurant. Existing cart
             if cartRestaurant.id == currentRestaurant.id {
                 //check if meal is already in cart
@@ -149,6 +150,14 @@ class MealDetailViewController : UIViewController
                         Cart.currentCart.items[itemIndex].quantity += self.quantity
                     })
                     let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                    alertController.addAction(sureAction)
+                    alertController.addAction(cancelAction)
+                    self.present(alertController, animated: true, completion: nil)
+                } else {
+                    // User want to add meals don't exist in cart
+                    Cart.currentCart.items.append(cartItem)
+                    
+                    
                 }
             }
             
