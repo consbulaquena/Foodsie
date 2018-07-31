@@ -1,9 +1,9 @@
 //
 //  User.swift
-//  Foodsie
+//  UberEats
 //
-//  Created by Cons Bulaqueña on 02/06/2018.
-//  Copyright © 2018 consios. All rights reserved.
+//  Created by D Tran on 11/24/17.
+//  Copyright © 2017 Wallie. All rights reserved.
 //
 
 import Foundation
@@ -13,8 +13,8 @@ class User
 {
     var name: String?
     var email: String?
-    var id: String?
     var pictureURL: String?
+    var id: String?
     
     static let current = User()
     
@@ -27,7 +27,6 @@ class User
         let imageDictionary = json["picture"].dictionary
         let imageDataDictionary = imageDictionary?["data"]?.dictionary
         pictureURL = imageDataDictionary?["url"]?.string
-        
     }
     
     func resetData() {
@@ -35,13 +34,18 @@ class User
         email = nil
         pictureURL = nil
         id = nil
-    
     }
     
+    func toDictionary() -> [String : Any]
+    {
+        return [
+            "name" : name!,
+            "id" : id!,
+            "email" : email!,
+            "pictureURL" : pictureURL!
+        ]
+    }
 }
-
-
-
 
 
 
