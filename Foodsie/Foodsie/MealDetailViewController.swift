@@ -1,9 +1,9 @@
 //
 //  MealDetailViewController.swift
-//  UberEats
+//  Foodsie
 //
-//  Created by D Tran on 11/23/17.
-//  Copyright © 2017 Wallie. All rights reserved.
+//  Created by Cons Bulaqueña on 28/05/2018.
+//  Copyright © 2018 consios. All rights reserved.
 //
 
 import UIKit
@@ -14,7 +14,7 @@ class MealDetailViewController : UIViewController
     @IBOutlet weak var quantityButtonsContainerView: UIView!
     @IBOutlet weak var mealImageView: UIImageView!
     @IBOutlet weak var mealNameLabel: UILabel!
-    @IBOutlet weak var mealDescriptionLabel: UILabel!
+    @IBOutlet weak var mealDecriptionLabel: UILabel!
     @IBOutlet weak var cartBarButtonItem: UIBarButtonItem! {
         didSet {
             let icon = UIImage(named: "icon_cart")
@@ -22,18 +22,23 @@ class MealDetailViewController : UIViewController
             let iconButton = UIButton(frame: iconSize)
             iconButton.setBackgroundImage(icon, for: .normal)
             cartBarButtonItem.customView = iconButton
-            if Cart.currentCart.items.count != 0 {
-                self.updateCartBarButtonItemBadgeNumber()
-            }
+            
+            
+            
+            
         }
     }
     @IBOutlet weak var quantityLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    
     
     var meal: Meal!
     var restaurant: Restaurant!
     var quantity = 1
     
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,55 +48,63 @@ class MealDetailViewController : UIViewController
         quantityButtonsContainerView.layer.borderWidth = 1.0
         quantityButtonsContainerView.layer.masksToBounds = true
         
+        self.navigationController?.navigationBar.tintColor = UIColor.black
         title = "Meal"
         mealNameLabel.text = meal.name
-        mealDescriptionLabel.text = meal.description
+        
+        if let price = meal.price {
+            priceLabel.text = "Php \(price)"
+        }
+
+        mealDecriptionLabel.text = meal.description
         if let imageURLString = meal.imageURL {
             let imageURL = URL(string: imageURLString)
-            Alamofire.request(imageURL!).responseData(completionHandler: { (responseData) in
-                // off the main queue
+        
+            //Alamofire use to dL image
+            Alamofire.request(imageURL!).response { (responseData) in
                 DispatchQueue.main.async {
                     if let imageData = responseData.data {
                         self.mealImageView.image = UIImage(data: imageData)
+                        
                     }
                 }
-            })
+            }
+            
         }
-        
         updateTotalLabel()
         quantityLabel.text = "\(quantity)"
+        
     }
-    
     func updateTotalLabel()
     {
         if let price = meal.price {
-            totalLabel.text = "$\(price * Double(quantity))"
+            totalLabel.text = "Php \(price * Double(quantity))"
         }
     }
     
     // MARK: - Quantity
     
-    @IBAction func increaseQuantity(_ sender: Any)
+
+    @IBAction func addQuantity(_ sender: Any)
     {
         if quantity < 99 {
             quantity += 1
             quantityLabel.text = String(quantity)
-            
+        
             updateTotalLabel()
         }
     }
     
-    @IBAction func decreaseQuantity(_ sender: Any)
+    @IBAction func decreasedQuantity(_sender: Any)
     {
         if quantity > 0 {
             quantity -= 1
             quantityLabel.text = String(quantity)
-            
+        
             updateTotalLabel()
         }
     }
-    
-    // MARK: - Add To Cart
+    // MARK - Add to Cart
     
     @IBAction func addToCart(_ sender: Any)
     {
@@ -103,86 +116,52 @@ class MealDetailViewController : UIViewController
         self.view.addSubview(imageView)
         startAnimatingCartButton()
         
+        
         UIView.animate(withDuration: 1.0, delay: 0.0, options: .curveEaseOut, animations: {
             imageView.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
             imageView.center = CGPoint(x: self.view.frame.width - 40, y: 24)
+            
         }) { (complete) in
             imageView.removeFromSuperview()
             let cartItem = CartItem(meal: self.meal, quantity: self.quantity)
             
-            // 1. make sure that the restaurant is the same as the current cart's restaurant
+            // Ensure restaurant = cart's restaurant
             guard let cartRestaurant = Cart.currentCart.restaurant, let currentRestaurant = self.restaurant else {
-                // this is a new cart
+                // New cart to create
                 Cart.currentCart.restaurant = self.restaurant
                 Cart.currentCart.items.append(cartItem)
-                self.updateCartBarButtonItemBadgeNumber()
                 return
             }
             
-            // else, if the ordered meals are from the same restaurant
+            
+            //Else, if ordered meals same restaurant. Existing cart
             if cartRestaurant.id == currentRestaurant.id {
-                // check if the meal item is already in the cart
-                let itemIndex = Cart.currentCart.items.index(where: {(currentItem) -> Bool in
+                //check if meal is already in cart
+                let itemIndex = Cart.currentCart.items.index(where: { (currentItem) -> Bool in
                     return currentItem.meal.id == cartItem.meal.id
                 })
-                
-                if let itemIndex = itemIndex {
-                    // it's already added in the cart
-                    // alert: do you want to add more of this same meal to your cart
-                    let alertController = UIAlertController(title: "Want to add more?", message: "Your cart already has this item. Do you want to add more?", preferredStyle: .alert)
-                    let sureAction = UIAlertAction(title: "Sure!", style: .default, handler: { (action) in
-                        // we want to add this item to cart
-                        Cart.currentCart.items[itemIndex].quantity += self.quantity
-                        self.startAnimatingCartButton()
-                    })
-                    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-                    alertController.addAction(sureAction)
-                    alertController.addAction(cancelAction)
-                    self.present(alertController, animated: true, completion: nil)
-                } else {
-                    // want-to-add meals don't exist in cart yet
-                    Cart.currentCart.items.append(cartItem)
-                }
-            } else {
-                // MEALS ARE NOT FROM THE SAME RESTAURANT
-                let alertController = UIAlertController(title: "Want to start a new cart?", message: "You're ordering meals from a different restaurant. Would you like to clear the current cart and start a new one?", preferredStyle: .alert)
-                let sureAction = UIAlertAction(title: "Sure! New Cart Please!", style: .default, handler: { (action) in
-                    // Reset the cart
-                    Cart.currentCart.reset()
-                    Cart.currentCart.items.append(cartItem)
-                    Cart.currentCart.restaurant = self.restaurant
-                    self.startAnimatingCartButton()
-                })
-                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-                alertController.addAction(sureAction)
-                alertController.addAction(cancelAction)
-                self.present(alertController, animated: true, completion: nil)
             }
             
-            self.updateCartBarButtonItemBadgeNumber()
+            
         }
     }
     
     func startAnimatingCartButton()
     {
-        cartBarButtonItem.tintColor = UIColor(red: 89/255.0, green: 189/255.0, blue: 90/255.0, alpha: 1)
+        cartBarButtonItem.tintColor = UIColor(red: 216/255.0, green: 36/255.0, blue: 46/255.0, alpha: 1)
         cartBarButtonItem.customView?.transform = CGAffineTransform(scaleX: 0, y: 0)
-        cartBarButtonItem.customView?.tintColor = UIColor(red: 89/255.0, green: 189/255.0, blue: 90/255.0, alpha: 1)
+        cartBarButtonItem.customView?.tintColor = UIColor(red: 216/255.0, green: 36/255.0, blue: 46/255.0, alpha: 1)
         
-        UIView.animate(withDuration: 1.0, delay: 0.5, usingSpringWithDamping: 0.5, initialSpringVelocity: 10, options: .curveLinear, animations: {
+        UIView.animate(withDuration: 1.0, delay: 0.5, usingSpringWithDamping: 0.5, initialSpringVelocity: 10, options: .curveLinear,  animations: {
             self.cartBarButtonItem.customView?.transform = .identity
         }) { (complete) in
-            self.updateCartBarButtonItemBadgeNumber()
+            
+            self.cartBarButtonItem.addBadge(number: self.quantity)
         }
-    }
-    
-    func updateCartBarButtonItemBadgeNumber()
-    {
-        self.cartBarButtonItem.addBadge(number: Cart.currentCart.getTotalQuantity())
     }
 }
 
-// Creating badge on cart bar button item
+//Create badge on cart
 
 extension CAShapeLayer {
     func drawCircleAtLocation(location: CGPoint, withRadius radius: CGFloat, andColor color: UIColor, filled: Bool) {
@@ -192,6 +171,7 @@ extension CAShapeLayer {
         path = UIBezierPath(ovalIn: CGRect(origin: origin, size: CGSize(width: radius * 2, height: radius * 2))).cgPath
     }
 }
+
 
 private var handle: UInt8 = 0;
 
@@ -241,26 +221,6 @@ extension UIBarButtonItem {
         badgeLayer?.removeFromSuperlayer()
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
