@@ -57,11 +57,36 @@ class Order
         
         let orderId = restaurantNewOrderRef.key
         let currentUserId = User.current.id!
-        let latestOrderRef = Database.database()
+        let latestOrderRef = Database.database().reference().child("user/\(currentUserId)/latest-order")
+        let restaurant = Cart.currentCart.restaurant!
+        let orderDictionary: [String : Any] = [
+            "orderId" : orderId,
+            "stripeToken" : stripeToken!,
+            "restaurant" : restaurant.toDictionary(),
+            "orderDetails" : orderDetailDictionaries!,
+            "address" : address!,
+            "status" : "Preparing",
+            "total" : Cart.currentCart.getTotal(),
+            "customer" : User.current.toDictionary()
+            
+        ]
+        
+        //Save USer's latest order
+        latestOrderRef.setValue(orderDictionary)
+        
+        //Save restaurants new order
+        restaurantNewOrderRef.setValue(orderDictionary)
         
     }
     
-    //3. get latest order
-    
-    
+    // 3. get latest order
+    class func getLatestOrder(completion: @escaping (JSON) -> Void)
+    {
+        let currentUserId = User.current.id!
+        let latestOrderRef = Database.database().reference().child("users/\(currentUserId)/latest-order")
+        latestOrderRef.observeSingleEvent(of: .value) { (snapshot) in
+            let json = JSON(snapshot.value)
+            completion(json)
+        }
+    }
 }
