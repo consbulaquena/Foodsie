@@ -106,21 +106,31 @@ class MealDetailViewController : UIViewController
         imageView.contentMode = .scaleAspectFill
         imageView.center = CGPoint(x: self.view.frame.width/2.0, y: self.view.frame.height - 50)
         self.view.addSubview(imageView)
+        startAnimatingCartButton()
+        
         
         UIView.animate(withDuration: 1.0, delay: 0.0, options: .curveEaseOut, animations: {
             imageView.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
             imageView.center = CGPoint(x: self.view.frame.width - 40, y: 24)
             
         }) { (complete) in
-            
+            imageView.removeFromSuperview()
             
             
         }
     }
     
-    
-    
-    
+    func startAnimatingCartButton()
+    {
+        cartBarButtonItem.tintColor = UIColor(red: 216/255.0, green: 36/255.0, blue: 46/255.0, alpha: 1)
+        cartBarButtonItem.customView?.transform = CGAffineTransform(scaleX: 0, y: 0)
+        cartBarButtonItem.customView?.tintColor = UIColor(red: 216/255.0, green: 36/255.0, blue: 46/255.0, alpha: 1)
+        
+        UIView.animate(withDuration: 1.0, delay: 0.5, usingSpringWithDamping: 0.5, initialSpringVelocity: 10, options: .curveLinear,  animations: {
+            self.cartBarButtonItem.customView?.transform = .identity
+        }) { (complete) in
+            
+        }
     
     
     
@@ -134,4 +144,5 @@ class MealDetailViewController : UIViewController
     
     
     
+}
 }
