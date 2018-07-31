@@ -17,8 +17,16 @@ class MealDetailViewController : UIViewController
     @IBOutlet weak var mealDecriptionLabel: UILabel!
     @IBOutlet weak var cartBarButtonItem: UIBarButtonItem! {
         didSet {
-        //
-    }
+            let icon = UIImage(named: "icon_cart")
+            let iconSize = CGRect(origin: CGPoint.zero, size: icon!.size)
+            let iconButton = UIButton(frame: iconSize)
+            iconButton.setBackgroundImage(icon, for: .normal)
+            cartBarButtonItem.customView = iconButton
+            
+            
+            
+            
+        }
     }
     @IBOutlet weak var quantityLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
