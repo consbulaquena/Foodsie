@@ -159,6 +159,22 @@ class MealDetailViewController : UIViewController
                     
                     
                 }
+            } else {
+                //Meals not from same restaurant
+                let alertController = UIAlertController(title: "Start a new Cart?", message: "You're ordering from a different restaurant. Would you like to start a new one?" , preferredStyle: .alert)
+                let sureAction = UIAlertAction(title: "Sure!", style: .default, handler: { (action) in
+                    //Reset cart
+                
+                    Cart.currentCart.reset()
+                    Cart.currentCart.items.append(cartItem)
+                    Cart.currentCart.restaurant = self.restaurant
+                    
+                })
+                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                alertController.addAction(sureAction)
+                alertController.addAction(cancelAction)
+                self.present(alertController, animated: true, completion: nil)
+                
             }
             
             
