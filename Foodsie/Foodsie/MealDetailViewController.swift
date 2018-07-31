@@ -145,7 +145,10 @@ class MealDetailViewController : UIViewController
                     // Already added in cary
                     //Add alert want to add more same meal
                     let alertController = UIAlertController(title: "Want to add more?", message: "Your cart already had this item. Do you want to add more?", preferredStyle: .alert)
-                    let sureAction = UIAlertAction(title: Sure!, style: <#T##UIAlertActionStyle#>, handler: <#T##((UIAlertAction) -> Void)?##((UIAlertAction) -> Void)?##(UIAlertAction) -> Void#>)
+                    let sureAction = UIAlertAction(title: "Sure!", style: .default, handler: { (action) in
+                        Cart.currentCart.items[itemIndex].quantity += self.quantity
+                    })
+                    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
                 }
             }
             
