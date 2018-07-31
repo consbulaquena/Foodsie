@@ -140,6 +140,13 @@ class MealDetailViewController : UIViewController
                 let itemIndex = Cart.currentCart.items.index(where: { (currentItem) -> Bool in
                     return currentItem.meal.id == cartItem.meal.id
                 })
+                
+                if let itemIndex = itemIndex {
+                    // Already added in cary
+                    //Add alert want to add more same meal
+                    let alertController = UIAlertController(title: "Want to add more?", message: "Your cart already had this item. Do you want to add more?", preferredStyle: .alert)
+                    let sureAction = UIAlertAction(title: Sure!, style: <#T##UIAlertActionStyle#>, handler: <#T##((UIAlertAction) -> Void)?##((UIAlertAction) -> Void)?##(UIAlertAction) -> Void#>)
+                }
             }
             
             
