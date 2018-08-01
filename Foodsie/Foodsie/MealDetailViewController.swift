@@ -22,10 +22,9 @@ class MealDetailViewController : UIViewController
             let iconButton = UIButton(frame: iconSize)
             iconButton.setBackgroundImage(icon, for: .normal)
             cartBarButtonItem.customView = iconButton
-            
-            
-            
-            
+            if Cart.currentCart.items.count != 0 {
+              self.updateCartBarButtonItemBadgeNumber()
+            }
         }
     }
     @IBOutlet weak var quantityLabel: UILabel!
@@ -149,7 +148,7 @@ class MealDetailViewController : UIViewController
                     let alertController = UIAlertController(title: "Want to add more?", message: "Your cart already had this item. Do you want to add more?", preferredStyle: .alert)
                     let sureAction = UIAlertAction(title: "Sure!", style: .default, handler: { (action) in
                         Cart.currentCart.items[itemIndex].quantity += self.quantity
-                        self.updateCartBarButtonItemBadgeNumber()
+                        self.startAnimatingCartButton()
                         
                     })
                     let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -171,6 +170,7 @@ class MealDetailViewController : UIViewController
                     Cart.currentCart.reset()
                     Cart.currentCart.items.append(cartItem)
                     Cart.currentCart.restaurant = self.restaurant
+                    self.startAnimatingCartButton()
                     
                 })
                 let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
