@@ -130,6 +130,7 @@ class MealDetailViewController : UIViewController
                 // New cart to create
                 Cart.currentCart.restaurant = self.restaurant
                 Cart.currentCart.items.append(cartItem)
+                self.updateCartBarButtonItemBadgeNumber()
                 return
             }
             
@@ -148,6 +149,8 @@ class MealDetailViewController : UIViewController
                     let alertController = UIAlertController(title: "Want to add more?", message: "Your cart already had this item. Do you want to add more?", preferredStyle: .alert)
                     let sureAction = UIAlertAction(title: "Sure!", style: .default, handler: { (action) in
                         Cart.currentCart.items[itemIndex].quantity += self.quantity
+                        self.updateCartBarButtonItemBadgeNumber()
+                        
                     })
                     let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
                     alertController.addAction(sureAction)
@@ -176,9 +179,10 @@ class MealDetailViewController : UIViewController
                 self.present(alertController, animated: true, completion: nil)
                 
             }
-            
-            
+                self.updateCartBarButtonItemBadgeNumber()
         }
+        
+
     }
     
     func startAnimatingCartButton()
@@ -191,8 +195,13 @@ class MealDetailViewController : UIViewController
             self.cartBarButtonItem.customView?.transform = .identity
         }) { (complete) in
             
-            self.cartBarButtonItem.addBadge(number: self.quantity)
+            self.updateCartBarButtonItemBadgeNumber()
         }
+    }
+    
+    func updateCartBarButtonItemBadgeNumber()
+    {
+        self.cartBarButtonItem.addBadge(number: Cart.currentCart.getTotalQuantity())
     }
 }
 
