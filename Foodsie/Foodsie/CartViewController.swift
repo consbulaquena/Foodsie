@@ -16,6 +16,7 @@
 
 
 import UIKit
+import MapKit
 
 class CartViewController : UIViewController
 {
@@ -25,9 +26,11 @@ class CartViewController : UIViewController
     @IBOutlet weak var cartTotalLabel: UILabel!
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var mapContainerView: UIView!
     @IBOutlet weak var addPaymentButton: UIButton!
     @IBOutlet weak var addressFieldView: UIView!
+    
+    
+    var cartItems = [CartItem]()
     
     
     override func viewDidLoad() {
@@ -41,7 +44,25 @@ class CartViewController : UIViewController
         
         tableView.dataSource = self
         
+        if Cart.currentCart.items.count == 0 {
+            // tehre's no item here.
+            // if there's no item in cart, tell the user to do some browsing
+            let emptyCartLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 80))
+            emptyCartLabel.center = self.view.center
+            emptyCartLabel.textAlignment = .center
+            emptyCartLabel.text = "YOUR CART IS EMPTY.\n PLEASE SELECT SOME MEALS."
+            emptyCartLabel.numberOfLines = 3
+            
+            self.view.addSubview(emptyCartLabel)
+        } else {
+            // display all the items in cart
+
+        }
     }
+    
+    
+        
+        
 }
 
 //MARK: - UITableViewDataSource
