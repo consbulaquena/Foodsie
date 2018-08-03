@@ -6,6 +6,15 @@
 //  Copyright © 2018 consios. All rights reserved.
 //
 
+// TO DO
+// [] outlets / connections
+// [] if there's no item in cart, tell userd do some browsing
+// [] populate the current cart's items into table view
+// [] enter shipping address
+// [] get user's current location via corelocation
+// [] interpret user's shipping address, put pin in map
+
+
 import UIKit
 
 class CartViewController : UIViewController
@@ -13,6 +22,12 @@ class CartViewController : UIViewController
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var menuBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var totalView: UIView!
+    @IBOutlet weak var cartTotalLabel: UILabel!
+    @IBOutlet weak var addressTextField: UITextField!
+    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var mapContainerView: UIView!
+    @IBOutlet weak var addPaymentButton: UIButton!
+    @IBOutlet weak var addressFieldView: UIView!
     
     
     override func viewDidLoad() {
