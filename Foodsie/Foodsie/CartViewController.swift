@@ -12,6 +12,8 @@ class CartViewController : UIViewController
 {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var menuBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var totalView: UIView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
