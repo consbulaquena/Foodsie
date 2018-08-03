@@ -45,21 +45,39 @@ class CartViewController : UIViewController
         tableView.dataSource = self
         
         if Cart.currentCart.items.count == 0 {
+
+            toggleEmptyCart(isHidden: true)
+            
             // tehre's no item here.
             // if there's no item in cart, tell the user to do some browsing
             let emptyCartLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 80))
             emptyCartLabel.center = self.view.center
             emptyCartLabel.textAlignment = .center
-            emptyCartLabel.text = "YOUR CART IS EMPTY.\n PLEASE SELECT SOME MEALS."
+            emptyCartLabel.text = "Your cart is empty.\n Please add some meals."
             emptyCartLabel.numberOfLines = 3
             
             self.view.addSubview(emptyCartLabel)
         } else {
             // display all the items in cart
-
+            toggleEmptyCart(isHidden: false)
+            getMealsInCart()
         }
     }
     
+    func toggleEmptyCart(isHidden: Bool)
+    {
+        tableView.isHidden = isHidden
+        totalView.isHidden = isHidden
+        addressFieldView.isHidden = isHidden
+        addPaymentButton.isHidden = isHidden
+    }
+    
+    func getMealsInCart()
+    {
+        cartItems = Cart.currentCart.items
+        tableView.reloadData()
+        cartTotalLabel.text = "Php\(Cart.currentCart.getTotal())"
+    }
     
         
         
@@ -73,7 +91,7 @@ extension CartViewController : UITableViewDataSource
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return cartItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
