@@ -79,8 +79,21 @@ class CartViewController : UIViewController
         cartTotalLabel.text = "Php\(Cart.currentCart.getTotal())"
     }
     
-        
-        
+    @IBAction func addPayment()
+    {
+        if addressTextField.text == "" {
+            let alertController = UIAlertController(title: "Oops!", message: "Please add your shipping address", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Okay!", style: .default) { (action) in
+                self.addressTextField.becomeFirstResponder()
+                
+            }
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion:  nil)
+        } else {
+            Cart.currentCart.address = addressTextField.text
+            self.performSegue(withIdentifier: "AddPayment", sender: self)
+        }
+    }
 }
 
 //MARK: - UITableViewDataSource
