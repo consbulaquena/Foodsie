@@ -17,6 +17,7 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
 class CartViewController : UIViewController
 {
@@ -31,6 +32,7 @@ class CartViewController : UIViewController
     
     
     var cartItems = [CartItem]()
+    var locationManager: CLLocationManager!
     
     
     override func viewDidLoad() {
@@ -78,6 +80,13 @@ class CartViewController : UIViewController
         tableView.reloadData()
         cartTotalLabel.text = "Php\(Cart.currentCart.getTotal())"
     }
+    
+    
+    func getCurrentLocation()
+    {
+        
+    }
+    
     
     @IBAction func addPayment()
     {
