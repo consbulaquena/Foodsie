@@ -90,6 +90,7 @@ class CartViewController : UIViewController
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.requestAlwaysAuthorization()
             locationManager.startUpdatingLocation()
+            self.mapView.showsUserLocation = true
 
             
         }
