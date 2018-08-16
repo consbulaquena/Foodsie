@@ -135,3 +135,17 @@ extension CartViewController : UITableViewDataSource
         return cell
     }
 }
+
+
+// MARK: - Location Service
+
+extension CartViewController : CLLocationManagerDelegate
+{
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations.last as! CLLocation
+        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        
+        
+        
+    }
+}
