@@ -84,6 +84,15 @@ class CartViewController : UIViewController
     
     func getCurrentLocation()
     {
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager = CLLocationManager()
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.requestAlwaysAuthorization()
+            locationManager.startUpdatingLocation()
+
+            
+        }
         
     }
     
