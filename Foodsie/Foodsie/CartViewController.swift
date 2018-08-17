@@ -163,6 +163,16 @@ extension CartViewController : UITextFieldDelegate
         let address = textField.text
         let geocode = CLGeocoder()
         Cart.currentCart.address = address
+        geocode.geocodeAddressString(address!) { (placemarks, error) in
+            if error != nil {
+                print("error translating location into placemark", error)
+            }
+            if let placemark = placemarks?.first {
+                let coordinate = placemark.location!.coordinate
+                let region = MKCoordinateRegion
+            }
+        }
+        
         
     }
 }
