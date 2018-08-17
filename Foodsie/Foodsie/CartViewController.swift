@@ -37,6 +37,8 @@ class CartViewController : UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getCurrentLocation()
+        
         
         //Menu code
         menuBarButtonItem.target = self.revealViewController()
@@ -45,6 +47,8 @@ class CartViewController : UIViewController
 
         
         tableView.dataSource = self
+        addressTextField.delegate = self
+        
         
         if Cart.currentCart.items.count == 0 {
 
@@ -94,6 +98,7 @@ class CartViewController : UIViewController
 
             
         }
+        
         
     }
     
@@ -148,6 +153,16 @@ extension CartViewController : CLLocationManagerDelegate
         self.mapView.setRegion(region, animated: true)
         
         
+        
+    }
+}
+
+extension CartViewController : UITextFieldDelegate
+{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let address = textField.text
+        let geocode = CLGeocoder()
+        Cart.currentCart.address = address
         
     }
 }
