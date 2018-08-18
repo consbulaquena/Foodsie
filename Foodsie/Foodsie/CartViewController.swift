@@ -170,9 +170,17 @@ extension CartViewController : UITextFieldDelegate
             if let placemark = placemarks?.first {
                 let coordinate = placemark.location!.coordinate
                 let region = MKCoordinateRegion(center: coordinate, span: MKCoordinateSpanMake(0.01, 0.01))
-            
+                self.mapView.setRegion(region, animated: true)
+                self.locationManager.stopUpdatingLocation()
+                
+                //create pin on map
+                
+                let pin = MKPointAnnotation()
+                pin.coordinate = coordinate
+                self.mapView.addAnnotation(pin)
             }
         }
+        return true //textFieldShouldReturn
         
         
     }
