@@ -169,7 +169,8 @@ extension CartViewController : UITextFieldDelegate
             }
             if let placemark = placemarks?.first {
                 let coordinate = placemark.location!.coordinate
-                let region = MKCoordinateRegion
+                let region = MKCoordinateRegion(center: coordinate, span: MKCoordinateSpanMake(0.01, 0.01))
+            
             }
         }
         
