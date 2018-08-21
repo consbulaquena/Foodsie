@@ -14,7 +14,53 @@ import SwiftyJSON
 class APIManager
 {
     static let shared = APIManager()
-    var baseURLString: String? = 
+    var baseURLString: String? = BACKEND_BASE_URL
+    var baseURL : URL {
+        if let urlString = self.baseURLString, let url = URL(string: urlString) {
+            return url
+        } else {
+            fatalError()
+        }
+        
+    }
+    
+    //Create new order
+    func createOrder(stripeToken: String, completion: @escaping (JSON) -> Void)
+    {
+        // 1 generate meal details json
+        let url = self.baseURL.appendingPathComponent("createorder")
+        let cartItems = Cart.currentCart.items
+        let cartItemsJSONArray = cartItems.map { item in
+            return [
+                "meal-id" : item.meal.id!,
+                "meal-img" : item.meal.imageURL!,
+                "meal-description" : item.meal.description!,
+                "meal-price" : item.meal.price!,
+                "meal-name" : item.meal.name!,
+                "quantity" : item.quantity,
+                
+                
+                
+                
+            ]
+        }
+        
+        // 2 create parameters for order
+        
+        
+        // 3 send post request to backend
+        
+        
+        
+        // 4 Charge the user for this order immediately
+        
+        
+        
+        
+    }
+    
+    
+    
 }
 
 
