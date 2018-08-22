@@ -38,14 +38,18 @@ class APIManager
                 "meal-price" : item.meal.price!,
                 "meal-name" : item.meal.name!,
                 "quantity" : item.quantity,
-                
-                
-                
-                
+                "subtotal" : item.meal.price! * Double(item.quantity)
             ]
         }
         
         // 2 create parameters for order
+        let params: [String : Any] = [
+            "access_token" : "",
+            "stripe_token" : stripeToken,
+            "restaurant_id" : "\(Cart.currentCart.restaurant!.id!)",
+            "address" : Cart.currentCart.address!,
+            "total" : Cart.currentCart.getTotal()
+        ]
         
         
         // 3 send post request to backend
