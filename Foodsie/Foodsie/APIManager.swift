@@ -28,7 +28,7 @@ class APIManager
     func createOrder(stripeToken: String, completion: @escaping (JSON) -> Void)
     {
         // 1 generate meal details json
-        let url = self.baseURL.appendingPathComponent("createorder")
+
         let cartItems = Cart.currentCart.items
         let cartItemsJSONArray = cartItems.map { item in
             return [
@@ -53,11 +53,13 @@ class APIManager
         
         
         // 3 send post request to backend
+        let url = self.baseURL.appendingPathComponent("createorder")
+        let newOrder = Order(stripeToken: stripeToken, restaurantId: Cart.currentCart.restaurant!.id!, orderDetails: cartItemsJSONArray, address: Cart.currentCart.address!)
+        newOrder.create() //For firebase
         
-        
-        
+
         // 4 Charge the user for this order immediately
-        
+        Alamofire.request
         
         
         
