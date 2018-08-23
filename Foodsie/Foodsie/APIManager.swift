@@ -59,14 +59,19 @@ class APIManager
         
 
         // 4 Charge the user for this order immediately
-        Alamofire.request
-        
-        
-        
+        Alamofire.request(url, method: .post, parameters: params).validate(statusCode: 200..<300).responseString { response in
+            switch response.result {
+            case .success(let value):
+                let jsonData = JSON(value)
+                completion(jsonData)
+            case .failure(let error):
+                print("There's Error!", error )
+                completion(JSON.null)
+            }
+            
+            
+        }
     }
-    
-    
-    
 }
 
 
