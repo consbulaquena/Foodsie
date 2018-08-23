@@ -31,7 +31,11 @@ class PaymentViewController : UIViewController
                 } else {
                     // else show an alert that they already have order on way
                     let alertVC = UIAlertController(title: "Order is on the way", message: "You have existing order isn't completed yet", preferredStyle: .alert)
-                    let cancelAction =
+                    let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                
+                    let okAction = UIAlertAction(title: "Go to the order", style: .default, handler: { (action) in
+                        self.performSegue(withIdentifier: "ShowOrderViewController", sender: self)
+                    })
                 }
                 
             }
