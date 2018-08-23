@@ -14,6 +14,32 @@ class PaymentViewController : UIViewController
 {
     @IBOutlet weak var cardTextField: STPPaymentCardTextField!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        title = "Payment"
+    }
+    
+    @IBAction func placeOrder()
+    {
+        //get latest order
+        Order.getLatestOrder { (json) in
+            DispatchQueue.main.async {
+                if json == JSON.null || json["status"].string == "Delivered" {
+             // if latest order is complete || nil
+             // then we can create a new order
+                } else {
+                    // else show an alert that they already have order on way
+                    let alertVC = UIAlertController(title: "Order is on the way", message: "You have existing order isn't completed yet", preferredStyle: .alert)
+                    let cancelAction =
+                }
+                
+            }
+        }
+        
+        
+        
+    }
     
 }
 
