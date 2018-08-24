@@ -28,6 +28,13 @@ class PaymentViewController : UIViewController
                 if json == JSON.null || json["status"].string == "Delivered" {
              // if latest order is complete || nil
              // then we can create a new order
+                    let card = self.cardTextField.cardParams STPAPIClient.shared().createToken(with: card, completion: { (token, error) in
+                        if let error = error {
+                            print("Error stripe generate card token", error)
+                        } else if let stripeToken = token {
+                            
+                        }
+                        })
                 } else {
                     // else show an alert that they already have order on way
                     let alertVC = UIAlertController(title: "Order is on the way", message: "You have existing order isn't completed yet", preferredStyle: .alert)
@@ -36,6 +43,10 @@ class PaymentViewController : UIViewController
                     let okAction = UIAlertAction(title: "Go to the order", style: .default, handler: { (action) in
                         self.performSegue(withIdentifier: "ShowOrderViewController", sender: self)
                     })
+                    alertVC.addAction(cancelAction)
+                    alertVC.addAction(okAction)
+                    
+                    self.present(alertVC, animated: true, completion: nil)
                 }
                 
             }
