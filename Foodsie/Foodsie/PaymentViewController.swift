@@ -33,6 +33,11 @@ class PaymentViewController : UIViewController
                             print("Error stripe generate card token", error)
                         } else if let stripeToken = token {
                             
+                            APIManager.shared.createOrder(stripeToken: stripeToken.tokenId, completion: { (json) in
+                                Cart.currentCart.reset()
+                                self.performSegue(withIdentifier: "ShowOrderViewController", sender: self)
+                            })
+                            
                         }
                         })
                 } else {
