@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import SwiftyJSON
 
 class TrackOrderViewController : UIViewController
 {
@@ -17,6 +18,13 @@ class TrackOrderViewController : UIViewController
     @IBOutlet weak var restaurantLabel: UILabel!
     @IBOutlet weak var orderStatusLabel: UILabel!
     @IBOutlet weak var menuBarButtonItem: UIBarButtonItem!
+    
+    var orderDetails = [JSON]()
+    var order: Order!
+    
+    
+        
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
