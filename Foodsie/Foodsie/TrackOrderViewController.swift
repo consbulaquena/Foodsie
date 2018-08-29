@@ -61,6 +61,11 @@ extension TrackOrderViewController : MKMapViewDelegate
     func getLocation(_ address: String, title: String, completion: @escaping(MKPlacemark) -> Void)
     {
         let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(address) { (placemarks, error) in
+            if error != nil {
+                print("Error translating location into placemark: ", error)
+            }
+        }
     }
     
     
