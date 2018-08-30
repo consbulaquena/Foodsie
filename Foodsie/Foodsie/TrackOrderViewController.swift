@@ -65,6 +65,16 @@ extension TrackOrderViewController : MKMapViewDelegate
             if error != nil {
                 print("Error translating location into placemark: ", error)
             }
+            
+            if let placemark = placemarks?.first {
+                let coordinate = placemark.location!.coordinate
+                
+                //create pin on the map
+                let pin = MKPointAnnotation()
+                pin.coordinate = coordinate
+                pin.title = title
+                
+            }
         }
     }
     
