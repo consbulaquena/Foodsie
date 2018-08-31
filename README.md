@@ -46,3 +46,6 @@ Note:
 <ul><li>Xcode 9.0+</li>
 <li>iOS 9.3+</li>
 </ul>
+
+
+Credit: <a href ="http://wallie.mykajabi.com">Duc Tran's tutorial on Uber Eats</a> helped me a lot to complete this project.
