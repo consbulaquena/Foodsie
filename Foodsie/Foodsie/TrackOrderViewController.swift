@@ -45,9 +45,15 @@ class TrackOrderViewController : UIViewController
             DispatchQueue.main.async {
               
                 
-                let restaurantAdress = json["restaurant"]["address"].string!
+                let restaurantAddress = json["restaurant"]["address"].string!
                 let shippingAddress = json["adress"].string!
-            
+                self.getLocation(restaurantAddress, title: "Restaurant", completion: { (sourceLocation) in
+                    self.source = sourceLocation
+                    self.getLocation(shippingAddress, title: "You", completion: { (destinationLocation) in
+                        self.destination = destinationLocation
+                        
+                    })
+                })
             
             }
         }
@@ -73,6 +79,8 @@ extension TrackOrderViewController : MKMapViewDelegate
                 let pin = MKPointAnnotation()
                 pin.coordinate = coordinate
                 pin.title = title
+                self.mapView.addAnnotation(pin)
+                completion(MKPlacemark(placemark: placemark))
                 
             }
         }
