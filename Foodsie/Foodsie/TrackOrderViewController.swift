@@ -51,6 +51,12 @@ class TrackOrderViewController : UIViewController
                     self.source = sourceLocation
                     self.getLocation(shippingAddress, title: "You", completion: { (destinationLocation) in
                         self.destination = destinationLocation
+                    
+                    
+                        //draw directions route on map
+                        self.getDirectionsOnMap()
+                        
+                        
                         
                     })
                 })
@@ -86,6 +92,13 @@ extension TrackOrderViewController : MKMapViewDelegate
         }
     }
     
+    func getDirectionsOnMap()
+    {
+      let request = MKDirectionsRequest()
+        request.source = MKMapViewDelegate
+        
+        
+    }
     
     
     
