@@ -108,13 +108,26 @@ extension TrackOrderViewController : MKMapViewDelegate
                 self.showRoute(response: response!)
             }
         
-        
     }
-    
-    
     
 }
 
-
-
-
+    func showRoute(response: MKDirectionsResponse)
+    {
+        for route in response.routes {
+            self.mapView.add(route.polyline, level: .aboveRoads)
+            
+        }
+        
+        //zoom map into route
+        var zoomRect = MKMapRectNull
+        for annotation in self.mapView.annotations {
+            let annotationPoint = MKMapPointForCoordinate(annotation.coordinate)
+            let pointRect = MKMapRectMake(annotationPoint.x, <#T##y: Double##Double#>, <#T##width: Double##Double#>, <#T##height: Double##Double#>)
+            
+            
+        }
+    
+    
+    }
+}
