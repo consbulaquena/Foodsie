@@ -129,7 +129,9 @@ extension TrackOrderViewController : MKMapViewDelegate
     
         let insetWidth = -zoomRect.size.width * 0.2
         let insetHeight = -zoomRect.size.height * 0.2
-        let insetRect = MKMapRectInset(<#T##rect: MKMapRect##MKMapRect#>, <#T##dx: Double##Double#>, <#T##dy: Double##Double#>)
+        let insetRect = MKMapRectInset(zoomRect, insetWidth, insetHeight)
+        
+        self.mapView.setVisibleMapRect(insetRect, animated: true)
         
         
         
