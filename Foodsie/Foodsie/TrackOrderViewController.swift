@@ -125,9 +125,14 @@ extension TrackOrderViewController : MKMapViewDelegate
             let annotationPoint = MKMapPointForCoordinate(annotation.coordinate)
             let pointRect = MKMapRectMake(annotationPoint.x, annotationPoint.y, 0.1, 0.1)
             zoomRect = MKMapRectUnion(zoomRect, pointRect)
-            
         }
     
+        let insetWidth = -zoomRect.size.width * 0.2
+        let insetHeight = -zoomRect.size.height * 0.2
+        let insetRect = MKMapRectInset(<#T##rect: MKMapRect##MKMapRect#>, <#T##dx: Double##Double#>, <#T##dy: Double##Double#>)
+        
+        
+        
     
     }
 }
