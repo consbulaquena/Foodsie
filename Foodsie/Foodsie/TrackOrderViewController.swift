@@ -99,6 +99,15 @@ extension TrackOrderViewController : MKMapViewDelegate
         request.destination = MKMapItem(placemark: destination!)
         request.requestsAlternateRoutes = false
         
+        let directions = MKDirections(request: request)
+        directions.calculate { (response, error) in
+            if error != nil {
+                print("error calculating directions: ", error)
+            } else {
+                // show routes now
+                self.showRoute(response: response!)
+            }
+        
         
     }
     
