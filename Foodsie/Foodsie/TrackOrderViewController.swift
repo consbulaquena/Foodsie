@@ -123,8 +123,8 @@ extension TrackOrderViewController : MKMapViewDelegate
         var zoomRect = MKMapRectNull
         for annotation in self.mapView.annotations {
             let annotationPoint = MKMapPointForCoordinate(annotation.coordinate)
-            let pointRect = MKMapRectMake(annotationPoint.x, <#T##y: Double##Double#>, <#T##width: Double##Double#>, <#T##height: Double##Double#>)
-            
+            let pointRect = MKMapRectMake(annotationPoint.x, annotationPoint.y, 0.1, 0.1)
+            zoomRect = MKMapRectUnion(zoomRect, pointRect)
             
         }
     
