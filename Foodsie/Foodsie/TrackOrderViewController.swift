@@ -95,7 +95,8 @@ extension TrackOrderViewController : MKMapViewDelegate
     func getDirectionsOnMap()
     {
       let request = MKDirectionsRequest()
-        request.source = MKMapViewDelegate
+        request.source = MKMapItem(placemark: source!)
+        request.destination = MKMapItem(placemark: destination!)
         
         
     }
