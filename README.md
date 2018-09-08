@@ -18,10 +18,10 @@ Hungry? <b>Foodsie</b> is food delivery app that brings delicious food from your
 ### HOW IT WORKS
 
 First, login with facebook.
-Search for restaurants.
+Search for near-by restaurants.
 Choose meals.
 Place your order and pay via Stripe.
-The resto will prepare your food and once it’s ready, the courier will bring it to your doorstep.
+The resto will prepare your food, real-time tracking and once it’s ready, the courier will bring it to your doorstep.
 
 
 ### FEATURES
