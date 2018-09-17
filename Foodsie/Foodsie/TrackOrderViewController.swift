@@ -133,8 +133,14 @@ extension TrackOrderViewController : MKMapViewDelegate
         
         self.mapView.setVisibleMapRect(insetRect, animated: true)
         
-        
-        
     
     }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer
+    {
+        let renderer = MKPolylineRenderer(overlay: overlay)
+        
+    }
+    
+    
 }
