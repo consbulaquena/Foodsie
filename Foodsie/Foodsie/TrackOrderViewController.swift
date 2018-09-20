@@ -140,7 +140,9 @@ extension TrackOrderViewController : MKMapViewDelegate
     {
         let renderer = MKPolylineRenderer(overlay: overlay)
         renderer.strokeColor = UIColor.red
-        renderer.lineWidth
+        renderer.lineWidth = 5.0
+        
+        return renderer
     }
     
     
