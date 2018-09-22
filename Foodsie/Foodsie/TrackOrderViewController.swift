@@ -20,7 +20,12 @@ class TrackOrderViewController : UIViewController
     @IBOutlet weak var menuBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
 
+
+    
+    var orderDetails = [JSON]()
     var order: Order!
+    
+    
     
     var destination: MKPlacemark?
     var source: MKPlacemark?
@@ -46,6 +51,7 @@ class TrackOrderViewController : UIViewController
         Order.getLatestOrder { (json) in
             DispatchQueue.main.async {
               
+                let latestOrder = Order(json: json)
                 
                 let restaurantAddress = json["restaurant"]["address"].string!
                 let shippingAddress = json["adress"].string!
@@ -162,6 +168,12 @@ extension TrackOrderViewController : UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 15
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CartItemCell", for: indexPath)
+        
+        return cell
     }
 }
 
