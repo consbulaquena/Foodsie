@@ -25,7 +25,7 @@ The resto will prepare your food, real-time tracking and once it’s ready, the 
 <li>Select food from restaurants near-by</li>
 <li>Food delivery tracking</li>
 <li>Stripe payment</li>
-<li>Map location service</li>
+<li>Draw directions on map with MapKit</li>
 <li>Facebook login & Authentication</li>
 <li>Firebase backend (full realtime actions)</li>
 <li>NodeJS back-end</li>
