@@ -1,12 +1,8 @@
 <img src="https://github.com/consbulaquena/Foodsie/blob/d5c1ae82c2b3911d82a01d5b245dbc65c8f66801/Foodsie/Foodsie/Assets.xcassets/foodsie-red-01.png" width="220" style="max-width:100%;">  
 
-# FOOD DELIVERY APP
+# FOOD DELIVERY APP [![Swift](https://img.shields.io/badge/Swift-4.0-orange.svg)]() [![Platform](https://img.shields.io/badge/platform-iOS-lightgrey.svg)]()
 
 <img src="https://github.com/consbulaquena/Foodsie/blob/master/Foodsie/Foodsie/Assets.xcassets/preview2.jpg" width="960" style="max-width:100%;">
-
-[![Swift](https://img.shields.io/badge/Swift-4.0-orange.svg)]() [![Platform](https://img.shields.io/badge/platform-iOS-lightgrey.svg)]()
-
-Deliver food to your door.
 
 <img src="https://github.com/consbulaquena/Foodsie/blob/master/Foodsie/Foodsie/Assets.xcassets/row1.jpg" width="960" style="max-width:100%;">
 <img src="https://github.com/consbulaquena/Foodsie/blob/master/Foodsie/Foodsie/Assets.xcassets/row2.jpg" width="960" style="max-width:100%;">
