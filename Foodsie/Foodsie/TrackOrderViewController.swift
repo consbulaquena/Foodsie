@@ -18,7 +18,7 @@ class TrackOrderViewController : UIViewController
     @IBOutlet weak var restaurantLabel: UILabel!
     @IBOutlet weak var orderStatusLabel: UILabel!
     @IBOutlet weak var menuBarButtonItem: UIBarButtonItem!
-    
+    @IBOutlet weak var tableView: UITableView!
 
     var order: Order!
     
@@ -33,6 +33,8 @@ class TrackOrderViewController : UIViewController
         menuBarButtonItem.target = self.revealViewController()
         menuBarButtonItem.action = #selector(SWRevealViewController.revealToggle(_: ))
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        
+        tableView.dataSource = self
         
         mapView.delegate = self
         
@@ -94,7 +96,7 @@ extension TrackOrderViewController : MKMapViewDelegate
     
     func getDirectionsOnMap()
     {
-      let request = MKDirectionsRequest()
+      let request = MKDirections.Request()
         request.source = MKMapItem(placemark: source!)
         request.destination = MKMapItem(placemark: destination!)
         request.requestsAlternateRoutes = false
@@ -112,24 +114,24 @@ extension TrackOrderViewController : MKMapViewDelegate
     
 }
 
-    func showRoute(response: MKDirectionsResponse)
+    func showRoute(response: MKDirections.Response)
     {
         for route in response.routes {
-            self.mapView.add(route.polyline, level: .aboveRoads)
+            self.mapView.addOverlay(route.polyline, level: .aboveRoads)
             
         }
         
         //zoom map into route
-        var zoomRect = MKMapRectNull
+        var zoomRect = MKMapRect.null
         for annotation in self.mapView.annotations {
-            let annotationPoint = MKMapPointForCoordinate(annotation.coordinate)
-            let pointRect = MKMapRectMake(annotationPoint.x, annotationPoint.y, 0.1, 0.1)
-            zoomRect = MKMapRectUnion(zoomRect, pointRect)
+            let annotationPoint = MKMapPoint.init(annotation.coordinate)
+            let pointRect = MKMapRect.init(x: annotationPoint.x, y: annotationPoint.y, width: 0.1, height: 0.1)
+            zoomRect = zoomRect.union(pointRect)
         }
     
         let insetWidth = -zoomRect.size.width * 0.2
         let insetHeight = -zoomRect.size.height * 0.2
-        let insetRect = MKMapRectInset(zoomRect, insetWidth, insetHeight)
+        let insetRect = zoomRect.insetBy(dx: insetWidth, dy: insetHeight)
         
         self.mapView.setVisibleMapRect(insetRect, animated: true)
         
