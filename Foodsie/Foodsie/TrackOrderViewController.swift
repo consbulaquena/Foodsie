@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import SwiftyJSON
 
-class TrackOrderViewController : UIViewController, UITableViewDataSource
+class TrackOrderViewController : UIViewController
 {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var containerView: UIView!
@@ -114,12 +114,7 @@ extension TrackOrderViewController : MKMapViewDelegate
     
 }
     
-    extension TrackOrderViewController : UITableViewDataSource
-    {
-        
-    }
-    
-    
+
 
     func showRoute(response: MKDirections.Response)
     {
@@ -156,3 +151,18 @@ extension TrackOrderViewController : MKMapViewDelegate
     
     
 }
+
+//MARK: UITableViewDataSource
+
+extension TrackOrderViewController : UITableViewDataSource
+{
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 15
+    }
+}
+
+
