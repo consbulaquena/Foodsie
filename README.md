@@ -35,7 +35,8 @@ The resto will prepare your food, real-time tracking and once it’s ready, the 
 <li>Supported devices: iPhone 5s, SE, 6, 6 Plus, 6s, 6s Plus, 7, 7 Plus, 8, 8 Plus, iPhone X </li>
 </ul>
 
-Note: 
+Note:
+The Driver side of the app is unavailable, this is just for the User/Guest side.
 <a href="https://github.com/John-Lluch/SWRevealViewController">SWRevealViewController.m</a> not included in repository.
 
 ### REQUIREMENTS
